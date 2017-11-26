@@ -17,18 +17,21 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 function prompt_install_option() {
-    printf "\n\nEnter 1 for Desktop with GUI and CLI tools or 2 for Server Option CLI tools\n"
+    printf "\n\nEnter 1 for Desktop Install (GUI and CLI tools) or 2 for Server Option (CLI tools)\n"
     printf "Both options will import config files and place them in the appropriate directory.\n"
-        read -p "Enter 1 or 2 for installation: " userChoice
+        read -p "Installation Selection: " userChoice
         case $userChoice in 
 
-                [1]
-                    desktop_install;                    
-                ;; 
-                [2]
-                    server_install;
-                ;;
-                *) echo "Invalid input!, Please make a valid selection())!"
+                [1] )
+                    echo "Desktop selected..."
+                    #server_install; 
+                    #desktop_install;
+                    ;; 
+                [2] )
+                    echo "Server selected..." 
+                    #server_install;
+                    ;;
+                *) printf "${red} \nInvalid input!, Please make a valid selection!${normal}"
                         prompt_install_option;
                     ;;
         esac
@@ -38,7 +41,7 @@ function install_apt_packages() {
     printf "Checking for and applying system updates...\n"
     #apt update && apt upgrade -y
     printf "Installing native apt packages...\n"
-    #apt install vim git -y
+    #apt install vim git ffmpeg -y
     printf "${green}Sucessfully installed: vim, git${normal}\n"
     }
 
@@ -61,6 +64,15 @@ function install_postman() {
     printf "${green}Successfully installed Postman{$normal}\n"
     }
 
+function install_vs_code() {
+    printf "Fetching Visual Studio Code...\n"
+    wget -c $dl_temp/code.deb https://go.microsoft.com/fwlink/?LinkID=760868
+    printf "done\n"
+    printf "Installing Visual Studio Code...\n"
+    dpkg -i $dl_temp/code.deb
+    printf "${green}Successfully installed Visual Studio Code${normal}\n"
+    }
+
 function install_chrome() {
     printf "Fetching chrome package...\n"
     wget -c -O $dl_temp/chrome_stable.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -70,6 +82,8 @@ function install_chrome() {
     printf "${green}Successfully installed Chrome Stable${normal}\n"
     }
 
+# ToDo: Come back to automate / check for docker latest stable to handle the 
+# addition of the apt-key fingerprint
 function install_docker() {
     printf "Removing older versions of Docker...\n"
     printf "This will NOT remove docker containers, images, or networks\n"
@@ -117,7 +131,9 @@ function server_install() {
 
 function desktop_install() {
     install_apt_packages
+    install_youtubedl
     install_postman
+    install_vs_code
     install_chrome
     install_docker
     }
