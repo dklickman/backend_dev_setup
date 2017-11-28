@@ -142,6 +142,7 @@ function install_virtual_env(){
 function server_install() {
     install_apt_packages    
     install_pyenv
+    install_virtual_env
     }
 
 function desktop_install() {
