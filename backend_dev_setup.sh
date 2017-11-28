@@ -105,7 +105,7 @@ function install_docker() {
    printf "Adding user to docker group...\n"
    #usermod -a -G docker $USER
    printf "${green}Successfully installed docker${normal}\n"
-}
+   }
 
 function install_pyenv() {
     printf 'Starting pyenv installation...\n'
@@ -127,6 +127,16 @@ function install_pyenv() {
         else
             printf "${red}Pyenv failed to install...${normal}\n"
         fi
+    }
+
+function install_virtual_env(){
+    printf "Fetching pyenv-virtualenv...\n"
+    #git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+    printf "done\n"
+    #echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+    source ~/.bashrc
+    printf "${green}Successfully installed virtualenv.${normal}"
+
     }
 
 function server_install() {
