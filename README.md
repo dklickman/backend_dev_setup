@@ -10,5 +10,6 @@ bash_aliases, .vimrc, .ssh_config,
 
 
 ToDo: 
+- VS code has a way to install extensions on the command line.  Look into to packaging up all favorite extensions: https://code.visualstudio.com/docs/editor/extension-gallery
 - Easy way to grab private keys. For now they will be copied from a USB key until a secure solution can be implemented
 
