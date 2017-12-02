@@ -109,13 +109,13 @@ function install_docker() {
 
 function install_docker_compose() {
     printf "Installing docker-compose...\n"
-    curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-    chmod +x /usr/local/bin/docker-compose
+    #curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    #chmod +x /usr/local/bin/docker-compose
     printf "done\n"
     printf "Installing bash completion for docker-compose...\n"
-    curl -L https://raw.githubusercontent.com/docker/compose/1.17.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+    #curl -L https://raw.githubusercontent.com/docker/compose/1.17.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
     printf "done\n"
-    printf "${green}Successfully installed docker-compose.${normal}"
+    printf "${green}Successfully installed docker-compose.${normal}\n"
     }
 
 function install_pyenv() {
