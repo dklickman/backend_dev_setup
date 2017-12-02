@@ -96,16 +96,27 @@ function install_docker() {
     #curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     #apt-key fingerprint 0EBFCD88
     #add-apt-repository \
-   #"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   #$(lsb_release -cs) \
-   #stable"
-   #apt update
-   printf "Installing docker community edition...\n"
-   #apt install docker-ce
-   printf "Adding user to docker group...\n"
-   #usermod -a -G docker $USER
-   printf "${green}Successfully installed docker${normal}\n"
-   }
+    #"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    #$(lsb_release -cs) \
+    #stable"
+    #apt update
+    printf "Installing docker community edition...\n"
+    #apt install docker-ce
+    printf "Adding user to docker group...\n"
+    #usermod -a -G docker $USER
+    printf "${green}Successfully installed docker${normal}\n"
+    }
+
+function install_docker_compose() {
+    printf "Installing docker-compose...\n"
+    curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    printf "done\n"
+    printf "Installing bash completion for docker-compose...\n"
+    curl -L https://raw.githubusercontent.com/docker/compose/1.17.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+    printf "done\n"
+    printf "${green}Successfully installed docker-compose.${normal}"
+    }
 
 function install_pyenv() {
     printf 'Starting pyenv installation...\n'
@@ -153,5 +164,6 @@ function desktop_install() {
     install_vs_code
     install_chrome
     install_docker
+    install_docker_compose
     }
 prompt_install_option
