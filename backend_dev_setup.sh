@@ -75,6 +75,10 @@ function install_vs_code() {
     printf "${green}Successfully installed Visual Studio Code${normal}\n"
     }
 
+function install_vs_code_extensions() {
+    printf "\n" 
+    }
+
 function install_chrome() {
     printf "Fetching chrome package...\n"
     #wget -c -O $dl_temp/chrome_stable.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
