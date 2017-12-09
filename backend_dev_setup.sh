@@ -50,7 +50,7 @@ function install_youtubedl() {
     printf "Updating permissions...\n"
     #chmod a+rx /usr/local/bin/youtube-dl
     printf "Installing ffmpeg...\n"
-    #app install ffmpeg
+    #apt install ffmpeg
     printf "done\n"
     printf "${green}Successfully installed youtube-dl${normal}\n"
     }
