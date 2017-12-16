@@ -94,7 +94,7 @@ function install_docker() {
     printf "Removing older versions of Docker...\n"
     printf "This will NOT remove docker containers, images, or networks\n"
     #apt remove docker docker-engine docker.io
-    printf "Adding dokcer community edition repository\n"
+    printf "Adding docker community edition repository\n"
     #apt install linux-image-extra-$(uname -r) linux-image-extra-virtual
     #apt install apt-transport-https ca-certificates curl software-properties-common
     #curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
